@@ -17,6 +17,10 @@ var _ = Describe("integration tests", func() {
 	})
 
 	if !headlessOnly {
+		itShouldBehaveLikeAPage("SlimerJS", func() (*agouti.Page, error) {
+			return slimerDriver.NewPage()
+		})
+
 		itShouldBehaveLikeAPage("ChromeDriver", func() (*agouti.Page, error) {
 			return chromeDriver.NewPage()
 		})

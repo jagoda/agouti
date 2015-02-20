@@ -10,6 +10,17 @@ func PhantomJS() *WebDriver {
 	return NewWebDriver("http://{{.Address}}", []string{"phantomjs", "--webdriver={{.Address}}"})
 }
 
+// SlimerJS returns an instance of a SlimerJS WebDriver.
+// Only builds from the master branch of SlimerJS appear to run.
+// Furthermore, you need the following environment variable exported:
+//   export PATH=/path/to/repo/for/slimerjs/src:$PATH
+//   export SLIMERJSLAUNCHER=/Applications/Firefox.app/Contents/MacOS/firefox
+// Note: the launcher path will be different depending on your OS and firefox
+// installation location.
+func SlimerJS() *WebDriver {
+	return NewWebDriver("http://{{.Address}}", []string{"slimerjs", "--webdriver={{.Address}}"})
+}
+
 // ChromeDriver returns an instance of a ChromeDriver WebDriver.
 func ChromeDriver() *WebDriver {
 	return NewWebDriver("http://{{.Address}}", []string{"chromedriver", "--silent", "--port={{.Port}}"})
